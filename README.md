@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/gary/calc.svg?branch=master)](https://travis-ci.org/gary/calc)
+[![Maintainability](https://api.codeclimate.com/v1/badges/2563372ab01f0639399e/maintainability)](https://codeclimate.com/github/gary/calc/maintainability)
+[![Inline docs](http://inch-ci.org/github/gary/calc.svg?branch=master)](http://inch-ci.org/github/gary/calc)
+
 # Calc
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/calc`. To experiment with that code, run `bin/console` for an interactive prompt.
