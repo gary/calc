@@ -4,3 +4,8 @@ AllCops:
   Exclude:
     - 'Rakefile'
     - 'bin/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'calc.gemspec'
+    - spec/**/*
