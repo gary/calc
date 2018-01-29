@@ -29,8 +29,14 @@ RSpec.describe Calc::Operation do
     end
 
     context "when the number of terms does not match the command's inputs" do
-      it 'raises an exception' do
-        expect { add.calculate(2, 2, 2) }.to raise_error(ArgumentError)
+      let(:message) do
+        "wrong number of arguments (given 3, expected 2) to '+' operation"
+      end
+
+      it 'raises an OperandMismatchError' do
+        expect { add.calculate(2, 2, 2) }
+          .to raise_error(described_class::OperandMismatchError)
+          .with_message(message)
       end
     end
   end

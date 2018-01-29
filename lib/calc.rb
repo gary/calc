@@ -4,5 +4,6 @@ require 'calc/version'
 
 # :nodoc:
 module Calc
-  # Your code goes here...
+  # Generic exception that all program-generated exceptions inherit from
+  Error = Class.new(StandardError)
 end

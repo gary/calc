@@ -11,6 +11,9 @@ module Calc
     # @return [String] The symbol that signifies the {Operation}
     attr_reader :sign
 
+    # When the operation is calculated with an unexpected number of operands
+    OperandMismatchError = Class.new(Error)
+
     # @param sign [String]
     # @param command [#call] How to calculate the result of the operation
     # @raise [ArgumentError] if the command is not a lambda
@@ -28,9 +31,13 @@ module Calc
     #   +command+ at initialization
     # @overload calculate(operand, operand)
     #   Calculates the operation on 0 or more operands
+    # @raise [OperandMismatchError] if the calculation is passed the wrong
+    #   number of operands
     # @return [Numeric] the result of the operation
     def calculate(*operands)
       command.call(*operands)
+    rescue ArgumentError => e
+      raise OperandMismatchError, e.message << " to '#{sign}' operation"
     end
   end
 end
