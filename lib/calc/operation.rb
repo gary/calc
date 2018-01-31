@@ -33,7 +33,7 @@ module Calc
     #   Calculates the operation on 0 or more operands
     # @raise [OperandMismatchError] if the calculation is passed the wrong
     #   number of operands
-    # @return [Numeric] the result of the operation
+    # @return [BigDecimal] the result of the operation
     def calculate(*operands)
       command.call(*operands)
     rescue ArgumentError => e

@@ -18,12 +18,12 @@ module Calc
     end
 
     # @api
-    # @param input [Numeric, String] number to perform an {Operation} on or
+    # @param input [BigDecimal, String] number to perform an {Operation} on or
     #   the +sign+ of the {Operation} to perform
     # @raise [TooFewElementsOnStackError] if an operation is attempted
-    #   and there are not enough arguments on the stack
-    # @return [Numeric] the input was if it is a number
-    # @return [Numeric] the result of the {Operation} if the input is a sign
+    #   and there are not enough elements on the stack
+    # @return [BigDecimal] the +input+ was a number or the result of
+    #   the {Operation} if +input+ was a sign
     def process(input:)
       result = if (operation = operations[input])
                  terms = stack.pop(2)
