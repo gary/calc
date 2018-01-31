@@ -7,5 +7,13 @@ module Calc
   #   {Calculator} is Postfix
   module Operations
     ADD = Operation.new('+', ->(addend1, addend2) { addend1 + addend2 })
+
+    module_function
+
+    # @api
+    # @return [Array<Operation>] the elementary arithmetic operations
+    def basic
+      [ADD]
+    end
   end
 end

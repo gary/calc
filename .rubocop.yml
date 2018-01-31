@@ -9,3 +9,7 @@ Metrics/BlockLength:
   Exclude:
     - 'calc.gemspec'
     - spec/**/*
+
+RSpec/DescribeClass:
+  Exclude:
+    - spec/features/**/*

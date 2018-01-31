@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'calc/error'
+
 module Calc
   # Calculates the result of {Operation}s in Reverse Polish (or Postfix)
   # notation. It is composable and can support a wide range of operations.
