@@ -15,18 +15,12 @@ RSpec.describe 'Calc calculates single item input', type: :aruba do
   context 'when the input contains only whole numbers' do
     let(:items) do
       <<~TRANSACTION
-        2
-        2
-        +
-        5
-        *
+        2 2 +
+        5 *
         4
         -
-        12
-        +
-        10
-        2
-        /
+        12 +
+        10 2 /
         +
       TRANSACTION
     end
@@ -48,7 +42,7 @@ RSpec.describe 'Calc calculates single item input', type: :aruba do
       OUTPUT
     end
 
-    it 'calculates the sum' do
+    it 'calculates the result' do
       expect(last_command_started.output).to eq expected_result
     end
   end
@@ -56,15 +50,9 @@ RSpec.describe 'Calc calculates single item input', type: :aruba do
   context 'when the input contains a mix of whole and decimal numbers' do
     let(:items) do
       <<~TRANSACTION
-        5.748
-        10.2
-        +
-        50.37
-        *
-        2.8
-        /
-        10.387
-        +
+        5.748 10.2 + 50.37 *
+        2.8 /
+        10.387 +
         5.13
         -
       TRANSACTION
@@ -85,7 +73,7 @@ RSpec.describe 'Calc calculates single item input', type: :aruba do
       OUTPUT
     end
 
-    it 'calculates the sum' do
+    it 'calculates the result' do
       expect(last_command_started.output).to eq expected_result
     end
   end
