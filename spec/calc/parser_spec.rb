@@ -39,6 +39,14 @@ RSpec.describe Calc::Parser do
       end
     end
 
+    context 'when the input is "D34DB33F"' do
+      let(:items) { 'D34DB33F' }
+
+      it 'returns an empty Array' do
+        expect(result).to match_array([])
+      end
+    end
+
     context 'when the input contains numbers and whitelisted items' do
       let(:items) { '3.5 5 + 8 -' }
 

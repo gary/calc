@@ -77,4 +77,28 @@ RSpec.describe 'Calc calculates single item input', type: :aruba do
       expect(last_command_started.output).to eq expected_result
     end
   end
+
+  context 'when the input contains invalid input' do
+    let(:items) do
+      <<~TRANSACTION
+        3 D34DB33F 4 + 7 *
+        10 /
+      TRANSACTION
+    end
+    let(:expected_result) do
+      <<~OUTPUT
+        3
+        4
+        7
+        7
+        49
+        10
+        4.9
+      OUTPUT
+    end
+
+    example 'it ignores the invalid input, calculating the result' do
+      expect(last_command_started.output).to eq expected_result
+    end
+  end
 end

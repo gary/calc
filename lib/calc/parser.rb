@@ -13,7 +13,7 @@ module Calc
   #
   # * Ignores all other input
   class Parser
-    NUMERIC = /(?:-)?\d+(?:\.\d+)?/
+    NUMERIC = /\A(?:-)?\d+(?:\.\d+)?\z/
     private_constant :NUMERIC
 
     attr_reader :whitelist
