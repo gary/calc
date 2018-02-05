@@ -28,6 +28,8 @@ module Calc
     #   the {Operation} if +input+ was a sign
     def process(input:)
       result = if (operation = operations[input])
+                 raise invalid_stack if stack.size < operation.operands
+
                  terms = stack.pop(2)
 
                  operation.calculate(*terms)
@@ -38,11 +40,13 @@ module Calc
       stack.push(result)
 
       result
-    rescue Error
-      raise TooFewElementsOnStackError, 'Too few elements on stack'
     end
 
     private
+
+    def invalid_stack
+      TooFewElementsOnStackError.new('Too few elements on stack')
+    end
 
     def to_hash(operations)
       operations.each_with_object({}) { |op, mapping| mapping[op.sign] = op }

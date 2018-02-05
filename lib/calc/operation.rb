@@ -7,6 +7,10 @@ module Calc
     attr_reader :command
     private :command
 
+    # @!attribute [r] operands
+    # @return [Integer] the number of operands that the operations requires
+    attr_reader :operands
+
     # @!attribute [r] sign
     # @return [String] The symbol that signifies the {Operation}
     attr_reader :sign
@@ -22,8 +26,9 @@ module Calc
     def initialize(sign, command)
       raise ArgumentError, 'Command must be a lambda' unless command.lambda?
 
-      @sign      = sign
-      @command   = command
+      @operands = command.arity
+      @sign     = sign
+      @command  = command
     end
 
     # @api

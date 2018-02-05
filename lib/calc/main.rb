@@ -31,23 +31,26 @@ module Calc
     # @api
     # Entry point for execution
     def execute!
-      process_input(interface)
+      interface.prompt(output: stdout)
+
+      interface.each_line do |items|
+        process_input(items)
+        interface.prompt(output: stdout)
+      end
     ensure
       interface.close
     end
 
     private
 
-    def process_input(interface)
-      interface.prompt(output: stdout)
+    def process_input(items)
+      results = parser.prepare(input: items)
 
-      interface.each_line do |items|
-        results = parser.prepare(input: items)
-
-        results.each do |result|
-          stdout.puts calculator.process(input: result)
-        end
-        interface.prompt(output: stdout)
+      results.each do |result|
+        stdout.puts calculator.process(input: result)
+      rescue Error => e
+        stdout.puts e
+        next
       end
     end
   end

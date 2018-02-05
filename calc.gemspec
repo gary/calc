@@ -7,6 +7,8 @@ require 'calc/version'
 Gem::Specification.new do |spec|
   spec.name          = 'calc'
   spec.version       = Calc::VERSION
+  spec.required_ruby_version = '~> 2.5'
+
   spec.authors       = ['Gary Iams']
   spec.email         = ['ge.iams@gmail.com']
 
