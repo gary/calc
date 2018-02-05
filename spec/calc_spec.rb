@@ -7,8 +7,9 @@ RSpec.describe Calc do
     expect(Calc::VERSION).not_to be nil
   end
 
-  pending 'does something useful' do
-    useful = false
+  it 'does something useful' do
+    useful = true
+
     expect(useful).to eq(true)
   end
 end
