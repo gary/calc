@@ -121,4 +121,43 @@ RSpec.describe 'Calc calculates single item input', type: :aruba do
       expect(last_command_started.output).to eq expected_result
     end
   end
+
+  context 'when the input reaches the end-of-file' do
+    let(:items) { '2 2 +' }
+    let(:expected_result) do
+      <<~TRANSACTION
+        2
+        2
+        4
+      TRANSACTION
+    end
+
+    example 'exits with a zero status' do
+      expect(last_command_started).to have_exit_status(0)
+    end
+  end
+
+  context "when the input contains a 'q'" do
+    let(:items) do
+      <<~TRANSACTION
+        2 2 + q
+        4 +
+      TRANSACTION
+    end
+    let(:expected_result) do
+      <<~TRANSACTION
+        2
+        2
+        4
+      TRANSACTION
+    end
+
+    it 'stops processing input' do
+      expect(last_command_started.output).to eq expected_result
+    end
+
+    it 'exits with a zero status' do
+      expect(last_command_started).to have_exit_status(0)
+    end
+  end
 end
